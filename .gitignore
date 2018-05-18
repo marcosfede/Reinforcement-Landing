@@ -36,5 +36,7 @@ sysinfo.txt
 .DS_Store
 *.pyc
 __pycache__
-Assets/ML-Agents/*
-!Assets/ML-Agents/Scripts/
+python/models/
+Assets/ML-Agents/Plugins/Android
+Assets/ML-Agents/Plugins/iOS
+

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     private GameObject looseObj;
     private GameObject baseObj;
     private bool aboutToWin;
+    public NNLandingAcademy academy;
     public bool lost;
     public bool won = false;
     private Rigidbody2D naveRB;
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour {
         looseObj = GameObject.Find("UI").transform.Find("Loose").gameObject;
         naveRB = nave.GetComponent<Rigidbody2D>();
         baseObj = transform.parent.Find("Base").gameObject;
+        academy = GameObject.Find("NNLandingAcademy").GetComponent<NNLandingAcademy>();
         reset();
     }
 
@@ -39,18 +41,22 @@ public class GameManager : MonoBehaviour {
     }
 
     public void reset() {
+
+        float xRandRange = academy.xRandRange;
+        float xPlatformRandRange = academy.xPlatformRandRange;
+
         won = false;
         lost = false;
         aboutToWin = false;
         looseObj.SetActive(false);
         winObj.SetActive(false);
         nave.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        nave.transform.localPosition = new Vector2(Random.Range(-2F, 2F), 4F);
+        nave.transform.localPosition = new Vector2(Random.Range(-xRandRange, xRandRange), Random.Range(1F, 3F));
         nave.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
-        baseObj.transform.localPosition = new Vector2(Random.Range(-4F, 4F), baseObj.transform.localPosition.y);
+        baseObj.transform.localPosition = new Vector2(Random.Range(-xPlatformRandRange, xPlatformRandRange), baseObj.transform.localPosition.y);
     }
 
-    void Update() {
+    void FixedUpdate() {
         if (Input.GetKeyDown(KeyCode.Space)) {
             reset();
         }

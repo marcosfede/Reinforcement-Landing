@@ -12,10 +12,11 @@ public class Nave : MonoBehaviour
     private GameObject fuegoCentral;
     private GameObject fuegoDerecho;
     private GameObject fuegoIzquierdo;
+    private float thrustSpeed;
     public Rigidbody2D rigidBody;
-
-    public float thrust = 0F;
-    public float latThrust = 0.8F;
+    public NNLandingAcademy academy;
+    public float thrust = 10;
+    public float latThrust = 5F;
 
     void Start()
     {
@@ -26,6 +27,9 @@ public class Nave : MonoBehaviour
         fuegoDerecho = motorDerecho.transform.Find("Fuego").gameObject;
         fuegoIzquierdo = motorIzquierdo.transform.Find("Fuego").gameObject;
         rigidBody = GetComponent<Rigidbody2D>();
+        academy = GameObject.Find("NNLandingAcademy").GetComponent<NNLandingAcademy>();
+        thrustSpeed = academy.thrustSpeed;
+
     }
 
     public void Idle()
@@ -49,7 +53,7 @@ public class Nave : MonoBehaviour
 
     public void MoveUp()
     {
-        rigidBody.AddRelativeForce(motorCentral.transform.up * thrust);
+        rigidBody.AddRelativeForce(motorCentral.transform.up * thrustSpeed);
         fuegoCentral.SetActive(true);
 
     }

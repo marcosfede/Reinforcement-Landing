@@ -638,12 +638,13 @@ PlayerSettings:
     daydream:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 3
-  cloudProjectId: f6b27652-5a89-482c-bfe0-c7c0e6c62409
+  cloudProjectId: 161a5443-e34a-482b-b427-1325f8a689e5
   projectName: NNLanding
-  organizationId: pablo-3855541
+  organizationId: frmarcos
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
